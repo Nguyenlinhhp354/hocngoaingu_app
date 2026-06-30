@@ -30,7 +30,11 @@ function Flashcard({ word }: { word: any }) {
   const [isFlipped, setIsFlipped] = useState(false);
 
   return (
-    <div className="h-48 cursor-pointer" onClick={() => setIsFlipped(!isFlipped)}>
+    <div 
+      className="h-48 cursor-pointer" 
+      style={{ perspective: '1000px' }} 
+      onClick={() => setIsFlipped(!isFlipped)}
+    >
       <motion.div
         className="w-full h-full relative"
         initial={false}
@@ -38,14 +42,28 @@ function Flashcard({ word }: { word: any }) {
         transition={{ duration: 0.6, type: 'spring', stiffness: 260, damping: 20 }}
         style={{ transformStyle: 'preserve-3d' }}
       >
-        {/* Mặt trước */}
-        <div className="absolute w-full h-full bg-blue-500 text-white rounded-xl flex items-center justify-center p-6 backface-hidden shadow-lg" style={{ backfaceVisibility: 'hidden' }}>
+        {/* Mặt trước: Hiển thị chữ Hán */}
+        <div 
+          className="absolute w-full h-full bg-blue-500 text-white rounded-xl flex items-center justify-center p-6 shadow-lg" 
+          style={{ 
+            backfaceVisibility: 'hidden',
+            position: 'absolute'
+          }}
+        >
           <span className="text-5xl font-bold">{word.hanzi}</span>
         </div>
-        {/* Mặt sau */}
-        <div className="absolute w-full h-full bg-white border-2 border-blue-500 rounded-xl flex flex-col items-center justify-center p-6 shadow-lg" style={{ backfaceVisibility: 'hidden', transform: 'rotateY(1800deg)' }}>
+
+        {/* Mặt sau: Hiển thị Pinyin và nghĩa */}
+        <div 
+          className="absolute w-full h-full bg-white border-2 border-blue-500 rounded-xl flex flex-col items-center justify-center p-6 shadow-lg" 
+          style={{ 
+            backfaceVisibility: 'hidden', 
+            transform: 'rotateY(180deg)',
+            position: 'absolute'
+          }}
+        >
           <span className="text-2xl font-bold text-gray-800">{word.pinyin}</span>
-          <span className="text-lg text-gray-600 mt-2">{word.vietnamese_meaning}</span>
+          <span className="text-lg text-gray-600 mt-2 text-center">{word.vietnamese_meaning}</span>
         </div>
       </motion.div>
     </div>
