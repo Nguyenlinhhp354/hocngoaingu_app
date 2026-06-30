@@ -13,8 +13,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: 'Ứng dụng Học Tiếng Trung', // Thay đổi tiêu đề ở đây
+  title: 'Ứng dụng Học Tiếng Trung',
   description: 'Website học từ vựng hiệu quả',
+  icons: {
+    icon: '/favicon.ico', // Đảm bảo đường dẫn này trỏ đúng đến file trong public
+  },
 };
 
 export default function RootLayout({
