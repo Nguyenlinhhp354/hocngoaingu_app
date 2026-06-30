@@ -22,16 +22,17 @@ export const metadata = {
 
 // app/layout.tsx
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+import './globals.css';
+import DashboardLayout from './components/DashboardLayout';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    // Thêm thuộc tính suppressHydrationWarning vào thẻ html
-    <html lang="en" suppressHydrationWarning>
-      <body className="h-full antialiased">
-        {children}
+    <html lang="vi">
+      <body>
+        {/* Bộ khung mới sẽ tự động áp dụng cho tất cả các trang / và /admin */}
+        <DashboardLayout>
+          {children}
+        </DashboardLayout>
       </body>
     </html>
   );
