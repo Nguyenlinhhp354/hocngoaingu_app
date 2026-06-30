@@ -20,13 +20,16 @@ export const metadata = {
   },
 };
 
+// app/layout.tsx
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    // Thêm thuộc tính suppressHydrationWarning vào thẻ html
+    <html lang="en" suppressHydrationWarning>
       <body className="h-full antialiased">
         {children}
       </body>
